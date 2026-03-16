@@ -40,7 +40,17 @@ class MainActivity : ComponentActivity() {
                             PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController, nomeUsuario = nome)
                         }
 
-                        composable("pedidos") { PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
+                        composable(
+                            route = "pedidos/{numeroPedido}/{valorTotal}",
+                            arguments = listOf(
+                                navArgument("numeroPedido") { type = NavType.StringType },
+                                navArgument("valorTotal") { type = NavType.StringType }
+                            )
+                        ) { backStackEntry ->
+                            val numero = backStackEntry.arguments?.getString("numeroPedido") ?: ""
+                            val valor = backStackEntry.arguments?.getString("valorTotal") ?: ""
+                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController, numeroPedido = numero, valorTotal = valor)
+                        }
                     }
                 }
             }

@@ -51,7 +51,7 @@ fun MenuScreen(modifier: Modifier = Modifier, navController: NavController) {
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { navController.navigate("pedidos") },
+            onClick = { navController.navigate("pedidos/98765/150.50") },
             modifier = buttonModifier,
             shape = RoundedCornerShape(size = 12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1976D2))
