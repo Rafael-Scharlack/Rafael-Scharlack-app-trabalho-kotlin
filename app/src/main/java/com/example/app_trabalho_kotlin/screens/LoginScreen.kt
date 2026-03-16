@@ -1,4 +1,4 @@
-package com.example.app_trabalho_kotlin // Mude para o seu package exato se for diferente
+package com.example.app_trabalho_kotlin.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
