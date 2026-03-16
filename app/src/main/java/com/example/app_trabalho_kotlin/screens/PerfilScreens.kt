@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nomeUsuario: String) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -31,6 +31,13 @@ fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController) {
             text = "MEU PERFIL",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
+            color = Color(0xFF2E7D32)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = "Usuário: $nomeUsuario",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
             color = Color(0xFF2E7D32)
         )
         Spacer(modifier = Modifier.height(24.dp))

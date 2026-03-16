@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.app_trabalho_kotlin.screens.LoginScreen
 import com.example.app_trabalho_kotlin.screens.MenuScreen
 import com.example.app_trabalho_kotlin.screens.PedidosScreen
@@ -29,7 +31,15 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navController, startDestination = "login") {
                         composable("login") { LoginScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
                         composable("menu") { MenuScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
-                        composable("perfil") { PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
+
+                        composable(
+                            route = "perfil/{nome}",
+                            arguments = listOf(navArgument("nome") { type = NavType.StringType })
+                        ) { backStackEntry ->
+                            val nome = backStackEntry.arguments?.getString("nome") ?: ""
+                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController, nomeUsuario = nome)
+                        }
+
                         composable("pedidos") { PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
                     }
                 }

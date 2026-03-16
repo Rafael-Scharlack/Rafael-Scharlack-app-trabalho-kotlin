@@ -42,7 +42,7 @@ fun MenuScreen(modifier: Modifier = Modifier, navController: NavController) {
             .fillMaxWidth()
             .height(56.dp)
         Button(
-            onClick = { navController.navigate("perfil") },
+            onClick = { navController.navigate("perfil/Rafael") },
             modifier = buttonModifier,
             shape = RoundedCornerShape(size = 12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1976D2))
