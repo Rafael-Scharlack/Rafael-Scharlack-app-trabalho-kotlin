@@ -26,27 +26,30 @@ class MainActivity : ComponentActivity() {
         setContent {
             ApptrabalhokotlinTheme {
                 val navController = rememberNavController()
-
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(navController = navController, startDestination = "login") {
-                        composable("login") { LoginScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
-                        composable("menu") { MenuScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
-
-                        composable(
-                            route = "perfil/{nome}",
-                            arguments = listOf(navArgument("nome") { type = NavType.StringType })
-                        ) { backStackEntry ->
-                            val nome = backStackEntry.arguments?.getString("nome") ?: "Usuário Genérico"
-                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController, nomeUsuario = nome)
+                        composable(route = "login") {
+                            LoginScreen(modifier = Modifier.padding(innerPadding), navController = navController)
                         }
-
+                        composable(route = "menu") {
+                            MenuScreen(modifier = Modifier.padding(innerPadding), navController = navController)
+                        }
+                        composable(
+                            route = "perfil/{nome}/{idade}",
+                            arguments = listOf(
+                                navArgument("nome") { type = NavType.StringType },
+                                navArgument("idade") { type = NavType.IntType }
+                            )
+                        ) {
+                            val nome = it.arguments?.getString("nome", "Usuário Genérico")
+                            val idade = it.arguments?.getInt("idade", 0)
+                            PerfilScreen(Modifier.padding(innerPadding), navController, nome!!, idade!!)
+                        }
                         composable(
                             route = "pedidos?cliente={cliente}",
-                            arguments = listOf(navArgument("cliente") {
-                                defaultValue = "Cliente Genérico"
-                            })
-                        ) { backStackEntry ->
-                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController, cliente = backStackEntry.arguments?.getString("cliente"))
+                            arguments = listOf(navArgument("cliente") { defaultValue = "Cliente Genérico" })
+                        ) {
+                            PedidosScreen(Modifier.padding(innerPadding), navController, it.arguments?.getString("cliente"))
                         }
                     }
                 }

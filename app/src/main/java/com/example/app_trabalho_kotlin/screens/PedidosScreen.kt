@@ -1,14 +1,11 @@
 package com.example.app_trabalho_kotlin.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,30 +18,18 @@ import androidx.navigation.NavController
 
 @Composable
 fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, cliente: String?) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(0xFFFFF3E0))
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Box(modifier = modifier.fillMaxSize().background(Color(0xFFFA9A9A9)).padding(32.dp)) {
         Text(
-            text = "MEUS PEDIDOS - $cliente",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFFE65100)
+            text = "PEDIDOS - $cliente",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.align(Alignment.TopCenter)
         )
-        Spacer(modifier = Modifier.height(32.dp))
         Button(
             onClick = { navController.navigate("menu") },
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE65100))
+            modifier = Modifier.align(Alignment.Center).size(width = 200.dp, height = 48.dp)
         ) {
-            Text(
-                text = "Voltar ao Menu",
-                fontSize = 18.sp,
-                color = Color.White
-            )
+            Text(text = "Voltar")
         }
     }
 }

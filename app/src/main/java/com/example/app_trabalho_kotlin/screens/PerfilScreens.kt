@@ -1,11 +1,10 @@
 package com.example.app_trabalho_kotlin.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -19,37 +18,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nomeUsuario: String) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(0xFFE8F5E9)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nome: String, idade: Int) {
+    Box(modifier = modifier.fillMaxSize().background(Color(0xFFE8F5E9)).padding(32.dp)) {
         Text(
-            text = "MEU PERFIL",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF2E7D32)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "Usuário: $nomeUsuario",
-            fontSize = 20.sp,
+            text = "PERFIL - $nome tem $idade anos",
+            fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF2E7D32)
+            modifier = Modifier.align(Alignment.TopCenter)
         )
-        Spacer(modifier = Modifier.height(24.dp))
         Button(
             onClick = { navController.navigate("menu") },
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))
+            modifier = Modifier.align(Alignment.Center).size(width = 200.dp, height = 48.dp)
         ) {
-            Text(
-                text = "Voltar ao Menu",
-                fontSize = 18.sp,
-                color = Color.White
-            )
+            Text(text = "Voltar")
         }
     }
 }
