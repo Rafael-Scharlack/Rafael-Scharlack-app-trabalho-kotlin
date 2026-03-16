@@ -12,21 +12,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun PedidosScreen(modifier: Modifier = Modifier) {
+fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFFFF3E0)) // Fundo laranja bem clarinho
+            .background(Color(0xFFFFF3E0))
             .padding(32.dp),
-        contentAlignment = Alignment.TopCenter // Texto centralizado no topo
+        contentAlignment = Alignment.TopCenter
     ) {
         Text(
-            text = "MEUS PEDIDOS", // Título personalizado
+            text = "MEUS PEDIDOS",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFFE65100) // Laranja escuro combinando
+            color = Color(0xFFE65100)
         )
     }
 }

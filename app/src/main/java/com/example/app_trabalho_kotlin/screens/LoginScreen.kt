@@ -16,34 +16,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFF1976D2)), // Fundo azul em vez de rosa
+            .background(Color(0xFF1976D2)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "BEM-VINDO", // Texto diferente
-            fontSize = 28.sp,
+            text = "BEM-VINDO",
+            fontSize = 32.sp,
             fontWeight = FontWeight.ExtraBold,
             color = Color.White
         )
-
-        Spacer(modifier = Modifier.height(32.dp)) // Espaçamento para não ficar colado
-
+        Spacer(modifier = Modifier.height(32.dp))
         Button(
-            onClick = { /* TODO: A navegação vem nos próximos commits */ },
+            onClick = { navController.navigate("menu") },
             colors = ButtonDefaults.buttonColors(containerColor = Color.White)
         ) {
             Text(
-                text = "ACESSAR", // Botão diferente
+                text = "ACESSAR",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1976D2) // Letra azul combinando com o fundo
+                color = Color(0xFF1976D2)
             )
         }
     }

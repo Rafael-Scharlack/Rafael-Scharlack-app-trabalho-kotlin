@@ -16,13 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun PerfilScreen(modifier: Modifier = Modifier) {
+fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController) {
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFE8F5E9)), // Fundo verde bem clarinho
+            .background(Color(0xFFE8F5E9)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -30,13 +31,11 @@ fun PerfilScreen(modifier: Modifier = Modifier) {
             text = "MEU PERFIL",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF2E7D32) // Verde escuro
+            color = Color(0xFF2E7D32)
         )
-
         Spacer(modifier = Modifier.height(24.dp))
-
         Button(
-            onClick = { /* TODO: Voltar para o menu */ },
+            onClick = { navController.navigate("menu") },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))
         ) {
             Text(

@@ -27,10 +27,10 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(navController = navController, startDestination = "login") {
-                        composable("login") { LoginScreen(modifier = Modifier.padding(innerPadding)) }
-                        composable("menu") { MenuScreen(modifier = Modifier.padding(innerPadding)) }
-                        composable("perfil") { PerfilScreen(modifier = Modifier.padding(innerPadding)) }
-                        composable("pedidos") { PedidosScreen(modifier = Modifier.padding(innerPadding)) }
+                        composable("login") { LoginScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
+                        composable("menu") { MenuScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
+                        composable("perfil") { PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
+                        composable("pedidos") { PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController) }
                     }
                 }
             }
