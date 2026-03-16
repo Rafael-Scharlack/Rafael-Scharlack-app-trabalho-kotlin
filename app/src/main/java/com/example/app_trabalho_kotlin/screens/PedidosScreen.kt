@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, numeroPedido: String, valorTotal: String) {
+fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, cliente: String?) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -30,23 +30,9 @@ fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, n
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "MEUS PEDIDOS",
+            text = "MEUS PEDIDOS - $cliente",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFFE65100)
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        Text(
-            text = "Pedido Nº: $numeroPedido",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFFE65100)
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Valor: R$ $valorTotal",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
             color = Color(0xFFE65100)
         )
         Spacer(modifier = Modifier.height(32.dp))

@@ -36,20 +36,17 @@ class MainActivity : ComponentActivity() {
                             route = "perfil/{nome}",
                             arguments = listOf(navArgument("nome") { type = NavType.StringType })
                         ) { backStackEntry ->
-                            val nome = backStackEntry.arguments?.getString("nome") ?: ""
+                            val nome = backStackEntry.arguments?.getString("nome") ?: "Usuário Genérico"
                             PerfilScreen(modifier = Modifier.padding(innerPadding), navController = navController, nomeUsuario = nome)
                         }
 
                         composable(
-                            route = "pedidos/{numeroPedido}/{valorTotal}",
-                            arguments = listOf(
-                                navArgument("numeroPedido") { type = NavType.StringType },
-                                navArgument("valorTotal") { type = NavType.StringType }
-                            )
+                            route = "pedidos?cliente={cliente}",
+                            arguments = listOf(navArgument("cliente") {
+                                defaultValue = "Cliente Genérico"
+                            })
                         ) { backStackEntry ->
-                            val numero = backStackEntry.arguments?.getString("numeroPedido") ?: ""
-                            val valor = backStackEntry.arguments?.getString("valorTotal") ?: ""
-                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController, numeroPedido = numero, valorTotal = valor)
+                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController = navController, cliente = backStackEntry.arguments?.getString("cliente"))
                         }
                     }
                 }
